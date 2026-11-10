@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="معاذ ستور - اكتشف أفضل تطبيقات وألعاب الويب في مكان واحد.">
+  <title>معاذ ستور | Moaz Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="bg-animation" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+    <span class="grid-overlay"></span>
+  </div>
+
+  <div class="container">
+    <header class="header">
+      <div class="brand-mark"><i class="fa-solid fa-store"></i></div>
+      <p class="eyebrow">مرحباً بك في عالم التطبيقات</p>
+      <h1>معاذ <span>ستور</span></h1>
+      <p class="subtitle">كل تطبيقاتك وألعابك المفضلة في مكان واحد</p>
+      <div class="header-glow" aria-hidden="true"></div>
+    </header>
+
+    <section class="stats-bar" aria-label="إحصائيات المتجر">
+      <div class="stat-item">
+        <span class="stat-icon"><i class="fa-solid fa-cubes-stacked"></i></span>
+        <span class="stat-label">إجمالي التطبيقات</span>
+        <strong id="totalAppsCount">0</strong>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-icon favorite-stat"><i class="fa-solid fa-heart"></i></span>
+        <span class="stat-label">المفضلة</span>
+        <strong id="favAppsCount">0</strong>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="البحث والتصفية">
+      <label class="search-box">
+        <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+        <input type="search" id="searchInput" placeholder="ابحث عن تطبيق أو لعبة..." autocomplete="off" aria-label="ابحث عن تطبيق أو لعبة">
+        <kbd>⌕</kbd>
+      </label>
+
+      <div class="filter-row">
+        <label class="category-wrap">
+          <i class="fa-solid fa-filter" aria-hidden="true"></i>
+          <select id="categorySelect" class="category-select" aria-label="اختر التصنيف">
+            <option value="all">كل التصنيفات</option>
+            <option value="تطبيقات">تطبيقات</option>
+            <option value="ألعاب">ألعاب</option>
+            <option value="أدوات">أدوات</option>
+            <option value="تسلية">تسلية</option>
+          </select>
+          <i class="fa-solid fa-chevron-down select-arrow" aria-hidden="true"></i>
+        </label>
+
+        <div class="tabs" role="group" aria-label="عرض التطبيقات">
+          <button class="tab-btn active" id="tabAll" type="button" data-tab="all" aria-pressed="true">
+            <i class="fa-solid fa-border-all"></i> الكل
+          </button>
+          <button class="tab-btn" id="tabFav" type="button" data-tab="fav" aria-pressed="false">
+            <i class="fa-solid fa-heart"></i> المفضلة <span id="favCount">0</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-heading">
+      <div>
+        <p class="section-kicker">اكتشف الجديد</p>
+        <h2>التطبيقات والألعاب</h2>
+      </div>
+      <span class="live-indicator"><span></span> المتجر</span>
+    </div>
+
+    <main class="apps-grid" id="appsGrid" aria-live="polite"></main>
+
+    <div class="loading-state" id="loadingState" role="status">
+      <span class="loader"></span>
+      <p>جاري تحميل التطبيقات...</p>
+    </div>
+
+    <div class="empty-state" id="emptyState" hidden>
+      <div class="empty-icon"><i class="fa-solid fa-box-open"></i></div>
+      <h3 id="emptyTitle">لا توجد تطبيقات حالياً</h3>
+      <p id="emptyText">ستظهر التطبيقات هنا بمجرد إضافتها إلى المتجر.</p>
+      <button type="button" class="retry-btn" id="retryBtn" hidden>
+        <i class="fa-solid fa-rotate"></i> إعادة المحاولة
+      </button>
+    </div>
+
+    <footer class="footer">
+      <div class="developer-badge">
+        <span class="pulse-dot"></span>
+        <span>تم التطوير بواسطة <strong>معاذ محمد عبد النبي</strong></span>
+      </div>
+      <p>© <span id="currentYear"></span> معاذ ستور — جميع الحقوق محفوظة</p>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
